@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen p-3 w-[220px] bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl " >
+<div class="flex flex-col h-screen p-3 w-[240px] bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl " >
     <div class="space-y-3">
 
         <div class="flex items-center justify-between">
@@ -54,9 +54,9 @@
                 </li>
 
                 <li class="rounded-sm">
-                    <a href="/deposits/create">
+                    <a href="/transection_profiles/create/Deposit">
                         <button
-                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('deposits/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transection_profiles/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path d="M12 5v14m7-7H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -68,7 +68,7 @@
                 </li>
 
                 <li class="rounded-sm">
-                    <a href="/withdrawals/create">
+                    <a href="/transection_profiles/create/withdrawls">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('withdrawals/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"

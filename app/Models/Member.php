@@ -28,19 +28,20 @@ class Member extends Model
         'EMail',  
         'DateOfBirth',  
         'NID',  
+        'Date',
         'Occupation',  
         'EducationalQualification',  
         'MemberOfAkhondomondoli',  
         'AddressOfAkhondomondoli',  
         'VerifiedBy',  
-        'CurrentAmount',
         'image',  
-        'signature'
+        'signature',
+        'CurrentAmount'
     ];
 
-    protected $attributes = [
-        'CurrentAmount' => 0,
-    ];
+    // protected $attributes = [
+    //     'CurrentAmount' => 0,
+    // ];
     public function getImageUrlAttribute()
     {
         return $this->image ? asset('' . $this->image) : null;
@@ -50,5 +51,10 @@ class Member extends Model
     {
         return $this->signature ? asset('' . $this->signature) : null;
     }
+    public function transections()
+{
+    return $this->hasMany(TransectionProfile::class, 'Member_ID', 'Member_ID');
+}
+
 
 }

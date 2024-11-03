@@ -11,7 +11,7 @@
             margin-top: 22px;
         }
     </style>
-    <div class="grid grid-cols-11  font-poppins">
+    <div class="grid grid-cols-11 dark:bg-gray-900 dark:text-gray-100   font-poppins">
         <div class="col-span-2  shadow-2xl ">
             @include('user.sidebar.sidebar')
         </div>
@@ -19,15 +19,15 @@
 
 
             @if (session('success'))
-                <p class=" text-green-700 p-4 rounded  w-[85%] mx-auto ">{{ session('success') }}</p>
+                <p class=" text-green-700 p-4 bg-green-100 rounded  w-[100%] mx-auto ">{{ session('success') }}</p>
             @endif
-            <div class="w-[70%] mx-auto  px-5 py-2 ">
+            <div class="w-[70%] mx-auto dark:bg-gray-800 px-5 py-1 ">
                 <form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data"
                     onsubmit="return validateForm()">
                     @csrf
 
                     <div
-                        class="  p-8 border dark:bg-gray-800 dark:border-gray-600 border-blue-300 bg-slate-200 dark:bg-transparent shadow-lg rounded-xl">
+                        class="  p-8 border  dark:border-gray-800 border-blue-300  dark:bg-transparent shadow-lg rounded-xl">
                         <div class="text-center pb-8 text-xl dark:text-[#95A5BC] font-semibold">
                             <h2>
                                 Provide Your Information To
@@ -46,7 +46,7 @@
                                     <label for="member_id" class="block dark:text-gray-50 mb-2">Member ID</label>
                                     <input type="number" id="member_id" name="member_id"
                                         value="{{ $largestMemberId + 1 }}" required
-                                        class=" rounded-lg text-gray-900  border border-gray-400 p-2 w-full" readonly>
+                                        class="dark:bg-gray-800 px-2 rounded-md    w-full" readonly>
 
                                 </div>
 
@@ -54,7 +54,7 @@
                                 <div class="mb-4 form-control w-full">
                                     <label for="member_name" class="block dark:text-gray-50 mb-2">Member Name</label>
                                     <input type="text" id="Name" name="Name" value="{{ old('Name') }}"
-                                        required class="border text-gray-950 rounded-lg p-2 w-full">
+                                        required class=" dark:bg-gray-800 px-2 rounded-md   w-full">
 
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                     <label for="FatherName" class="block dark:text-gray-50 mb-2">Father's Name</label>
                                     <input type="text" id="FatherName" name="FatherName"
                                         value="{{ old('FatherName') }}" required
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md   w-full">
                                 </div>
 
                                 <!-- Mother's Name -->
@@ -72,7 +72,7 @@
                                     <label for="MotherName" class="block dark:text-gray-50 mb-2">Mother's Name</label>
                                     <input type="text" id="MotherName" name="MotherName"
                                         value="{{ old('MotherName') }}" required
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
@@ -81,14 +81,14 @@
                                         (Optional)</label>
                                     <input type="text" id="SpouseName" name="SpouseName"
                                         value="{{ old('SpouseName') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="mb-4 form-control w-full">
                                     <label for="PhoneNumber" class="block dark:text-gray-50 mb-2">Mobile Number</label>
                                     <input type="number" id="PhoneNumber" name="PhoneNumber"
                                         value="{{ old('PhoneNumber') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                             </div>
 
@@ -99,14 +99,14 @@
                                 <div class="mb-4">
                                     <label for="PerAddress" class="block dark:text-gray-50 mb-2">Permanent
                                         Address</label>
-                                    <textarea id="PerAddress" name="PerAddress" required class="border rounded-lg text-gray-950 p-2 w-full">{{ old('PerAddress') }}</textarea>
+                                    <textarea id="PerAddress" name="PerAddress" required class="dark:bg-gray-800 px-2 rounded-md  w-full">{{ old('PerAddress') }}</textarea>
                                 </div>
 
                                 <!-- Present Address -->
                                 <div class="mb-4">
                                     <label for="MailAddress" class="block dark:text-gray-50 mb-2">Present
                                         Address</label>
-                                    <textarea id="MailAddress" name="MailAddress" required class="border rounded-lg text-gray-950 p-2 w-full">{{ old('MailAddress') }}</textarea>
+                                    <textarea id="MailAddress" name="MailAddress" required class="dark:bg-gray-800 px-2 rounded-md  w-full">{{ old('MailAddress') }}</textarea>
                                 </div>
                             </div>
 
@@ -115,7 +115,7 @@
                                 <div class="mb-4 form-control w-full">
                                     <label for="EMail" class="block dark:text-gray-50 mb-2">Email</label>
                                     <input type="email" id="EMail" name="EMail" value="{{ old('EMail') }}"
-                                        class="border rounded-lg text-gray-950 p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
 
                                 <!-- Date of Birth -->
@@ -123,7 +123,7 @@
                                     <label for="DateOfBirth" class="block dark:text-gray-50 mb-2">Date of Birth</label>
                                     <input type="date" id="DateOfBirth" name="DateOfBirth"
                                         value="{{ old('DateOfBirth') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
@@ -132,7 +132,7 @@
                                     <label for="NID" class="block dark:text-gray-50 mb-2">National ID
                                         Number</label>
                                     <input type="number" id="NID" name="NID" value="{{ old('NID') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
 
                                 <!-- Occupation -->
@@ -140,7 +140,7 @@
                                     <label for="Occupation" class="block dark:text-gray-50 mb-2">Occupation</label>
                                     <input type="text" id="Occupation" name="Occupation"
                                         value="{{ old('Occupation') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
@@ -149,7 +149,7 @@
                                         class="block dark:text-gray-50 mb-2">Educational Qualification</label>
                                     <input type="text" id="EducationalQualification"
                                         name="EducationalQualification" value="{{ old('EducationalQualification') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
 
                                 <!-- Akhanda Kalyan Tahabil -->
@@ -157,7 +157,7 @@
                                     <label for="MemberOfAkhondomondoli" class="block dark:text-gray-50 mb-2">Member of
                                         Tahabil</label>
                                     <select id="MemberOfAkhondomondoli" name="MemberOfAkhondomondoli"
-                                        class="border rounded-lg text-gray-950 p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                         <option value="">Select</option>
                                         <option value="chittagong"
                                             {{ old('MemberOfAkhondomondoli') == 'chittagong' ? 'selected' : '' }}>
@@ -180,7 +180,7 @@
                                         Tahabil</label>
                                     <input type="text" id="AddressOfAkhondomondoli" name="AddressOfAkhondomondoli"
                                         value="{{ old('AddressOfAkhondomondoli') }}"
-                                        class="border text-gray-950 rounded-lg p-2 w-full">
+                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
                                 </div>
                             </div>
                      </div>
@@ -244,7 +244,7 @@
 
                             </div>
                             <!-- Submit Button -->
-                            <div class="flex justify-around mt-7 items-center mx-auto w-[70%]">
+                            <div class="flex justify-around mt-7 gap-5 items-center mx-auto w-[70%]">
                                 <div class="mb-4 form-control w-full">
                                     <button type="submit" class="bg-blue-600  text-white rounded-lg px-4 py-2">Add
                                         New

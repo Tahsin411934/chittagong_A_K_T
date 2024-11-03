@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\NomineeController;
+use App\Http\Controllers\TransectionProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,5 +40,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('member', MemberController::class);
+Route::resource('transection_profiles', TransectionProfileController::class);
+Route::get('/transection_profiles/create/{type}', [TransectionProfileController::class, 'create'])->name('user.nominees.create');
+
+Route::get('/nominees/create', [NomineeController::class, 'create'])->name('user.nominees.create');
+Route::post('/nominees', [NomineeController::class, 'store'])->name('nominees.store');
 
 require __DIR__.'/auth.php';

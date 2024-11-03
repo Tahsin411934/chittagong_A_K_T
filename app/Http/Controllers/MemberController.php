@@ -42,35 +42,40 @@ class MemberController extends Controller
             'PhoneNumber' => 'nullable|string|max:15',  
             'EMail' => 'nullable|email|max:255',  
             'DateOfBirth' => 'nullable|date',  
-            'NID' => 'nullable|string|max:255',  
+            'NID' => 'nullable|string|max:255',
+            'Date' => 'nullable|date',   
             'Occupation' => 'nullable|string|max:255',  
             'EducationalQualification' => 'nullable|string|max:255',  
             'MemberOfAkhondomondoli' => 'nullable|string|max:255', 
             'AddressOfAkhondomondoli' => 'nullable|string|max:255',  
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
            
         ]);
         
 
         // Create a new member
         $data = $request->except(['image', 'signature']);
-
+        $data['CurrentAmount'] = '1';
+        $data['Date'] = now();
         // Handle image upload
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $imageName);
-            $data['image'] = 'images/' . $imageName;
-        }
+       // Handle image upload
+if ($request->hasFile('image')) {
+    $image = $request->file('image');
+    $imageName = $request->member_id . '_image.' . $image->getClientOriginalExtension();
+    $image->move(public_path('images'), $imageName);
+    $data['image'] = 'images/' . $imageName;
+}
 
-        // Handle signature upload
-        if ($request->hasFile('signature')) {
-            $signature = $request->file('signature');
-            $signatureName = time() . '_' . $signature->getClientOriginalName();
-            $signature->move(public_path('signatures'), $signatureName);
-            $data['signature'] = 'signatures/' . $signatureName;
-        }
+// Handle signature upload
+if ($request->hasFile('signature')) {
+    $signature = $request->file('signature');
+    $signatureName = $request->member_id . '_signature.' . $signature->getClientOriginalExtension();
+    $signature->move(public_path('signatures'), $signatureName);
+    $data['signature'] = 'signatures/' . $signatureName;
+}
+
 
         Member::create($data);
 
