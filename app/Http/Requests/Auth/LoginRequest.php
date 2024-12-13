@@ -36,7 +36,7 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited(); // Ensure the rate limit is not exceeded
 
         // Get the credentials
-        $credentials = $this->only('UserName', 'password');
+        $credentials = $this->only('UserName', 'password','type');
 
         // Fetch the user from the database
         $user = User::where('UserName', $credentials['UserName'])->first();
@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
         // ]);
 
         // Check if user exists and verify the hashed password
-        if ($user && Hash::check($credentials['password'], $user->Password)) { // Verify hashed password
+        if ($user && $credentials['password']=== $user->Password && $credentials['type'] === "user" ) { // Verify hashed password
             // If the user is found and the password matches, log the user in
             Auth::login($user);
             RateLimiter::clear($this->throttleKey()); // Clear the rate limiter for this user
@@ -61,6 +61,17 @@ class LoginRequest extends FormRequest
                 'UserName' => trans('auth.failed'), // Return authentication failed message
             ]);
         }
+        // if ($user && Hash::check($credentials['password'], $user->Password)) { // Verify hashed password
+        //     // If the user is found and the password matches, log the user in
+        //     Auth::login($user);
+        //     RateLimiter::clear($this->throttleKey()); // Clear the rate limiter for this user
+        // } else {
+        //     // Hit the rate limiter and throw an error if authentication fails
+        //     RateLimiter::hit($this->throttleKey());
+        //     throw ValidationException::withMessages([
+        //         'UserName' => trans('auth.failed'), // Return authentication failed message
+        //     ]);
+        // }
     }
 
 

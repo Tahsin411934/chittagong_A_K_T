@@ -105,12 +105,13 @@ public function resetPassword(Request $request)
    
     try {
         $user = User::where('UserName', $request->UserName)->firstOrFail();
+       
     } catch (ModelNotFoundException $e) {
         return redirect()->back()->withErrors(['UserName' => 'Username not found!']);
     }
-
+ 
     // Verify old password directly (not recommended for production)
-    if ($request->old_password !== $user->password) {
+    if ($request->old_password !== $user->Password) {
         return redirect()->back()->withErrors(['old_password' => 'The old password is incorrect.']);
     }
 

@@ -30,9 +30,7 @@ Route::get('/dashboard', function () {
      } else {
         return view('Admin.deshboard');
      }
-    
-    
-    
+      
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
