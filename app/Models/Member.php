@@ -56,5 +56,11 @@ class Member extends Model
     return $this->hasMany(TransectionProfile::class, 'Member_ID', 'Member_ID');
 }
 
+public function nominees()
+{
+    return $this->hasMany(Nominee::class, 'Member_Id', 'Member_ID');
+}
+
+
 
 }

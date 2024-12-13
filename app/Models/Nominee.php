@@ -16,7 +16,7 @@ public $timestamps = false;
 
     public function member()
     {
-        // Assuming 'Member_ID' is both the foreign key in 'Nominee' and primary key in 'Member'
-        return $this->belongsTo(Member::class, 'Member_ID', 'Member_ID');
+        
+        return $this->belongsTo(Member::class, 'Member_ID', 'Member_Id');
     }
 }

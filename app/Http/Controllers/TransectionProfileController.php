@@ -11,9 +11,13 @@ class TransectionProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('Trans_ID')){
+            dd($request);
+        }
+       
+       return view('user.transectionHistory.index') ;
     }
 
     /**

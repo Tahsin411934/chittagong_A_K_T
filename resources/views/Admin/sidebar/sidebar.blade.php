@@ -1,4 +1,5 @@
-<div class="flex flex-col h-screen p-3 w-[240px] bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl " >
+<div
+    class="flex flex-col h-screen p-3 w-[240px] bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl ">
     <div class="space-y-3">
 
         <div class="flex items-center justify-between">
@@ -40,7 +41,7 @@
                     </a>
                 </li>
                 <li class="rounded-sm">
-                    <a href="/member/create">
+                    <a href="/users/create">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('member/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -48,77 +49,129 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 16c-4.42 0-8 2.69-8 6v2h16v-2c0-3.31-3.58-6-8-6z" />
                             </svg>
-                            <span class="font-semibold">Add New Member</span>
+                            <span class="font-semibold">Add New User</span>
                         </button>
                     </a>
                 </li>
 
                 <li class="rounded-sm">
-                    <a href="/transection_profiles/create/Deposit">
+                    <a href="/member">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transection_profiles/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
-                                <path d="M12 5v14m7-7H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
+                                <path
+                                    d="M4 20h16v2H4v-2zm13.59-15.41a2 2 0 0 1 2.82 2.82l-12 12a2 2 0 0 1-1.11.57l-4 1a1 1 0 0 1-1.21-1.21l1-4a2 2 0 0 1 .57-1.11l12-12zM15 5.5l3.5 3.5L16 9 12.5 5.5 15 5.5zM6.5 17.5l2.5-.5-2-2-2 .5-.5 2.5 2-.5z" />
                             </svg>
-                            <span class="font-semibold">Deposit</span>
+
+                            <span class="font-semibold">view &Edit Member Info</span>
                         </button>
                     </a>
                 </li>
 
                 <li class="rounded-sm">
-                    <a href="/transection_profiles/create/withdrawls">
+                    <a href="/view_transaction">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('withdrawals/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
-                                <path d="M3 12h18v2H3z" />
+                                <path
+                                    d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5v4.5h4.5L13 3.5zM8 12h8v1.5H8V12zm0 3h8v1.5H8V15z" />
                             </svg>
-                            <span class="font-semibold">Withdrawals</span>
+
+                            <span class="font-semibold">View Trasection</span>
                         </button>
                     </a>
                 </li>
-
                 <li class="rounded-sm">
-                    <a href="/memberInfo">
+                    <a href="/edit_transaction">
+                        <button
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('/generate-receipt/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M4 20h16v2H4v-2zm13.59-15.41a2 2 0 0 1 2.82 2.82l-12 12a2 2 0 0 1-1.11.57l-4 1a1 1 0 0 1-1.21-1.21l1-4a2 2 0 0 1 .57-1.11l12-12zM15 5.5l3.5 3.5L16 9 12.5 5.5 15 5.5zM6.5 17.5l2.5-.5-2-2-2 .5-.5 2.5 2-.5z" />
+                            </svg>
+
+
+                            <span class="font-semibold">Edit Transaction Info</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="rounded-sm">
+                    <a href="/add_bank_account">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('memberInfo') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path
-                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.485 22 2 17.515 2 12S6.485 2 12 2s10 4.485 10 10-4.485 10-10 10zm-1-17h2v2h-2zm0 4h2v10h-2z" />
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
                             </svg>
-                            <span class="font-semibold">Member Information</span>
+
+                            <span class="font-semibold">Benefits</span>
                         </button>
                     </a>
                 </li>
+
+
 
                 <li class="rounded-sm">
-                    <a href="/generate-receipt/create">
+                    <a href="/users/set-role">
                         <button
-                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('/generate-receipt/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M19 8h-1V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-11-4h8v4H8V4zm10 16H6v-8h12v8zm-6-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm2-6H8V10h10v2z" />
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transaction-history') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M12 2v20m10-10H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
-                            <span class="font-semibold">Generate Receipt</span>
+
+
+
+                            <span class="font-semibold">Set Position</span>
                         </button>
                     </a>
                 </li>
+                <li class="rounded-sm">
+                    <a href="/users/reset-password">
+                        <button
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transaction-history') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.16 6.84 9.54l-1.53-2.04c-2.85-.96-4.84-3.65-4.84-6.5 0-3.87 3.13-7 7-7s7 3.13 7 7c0 2.85-2.01 5.54-4.84 6.5l-1.53 2.04A9.97 9.97 0 0 0 12 22c-5.52 0-10-4.48-10-10s4.48-10 10-10zm0 4c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+                            </svg>
 
+                            <span class="font-semibold">Reset Password</span>
+                        </button>
+                    </a>
+                </li>
                 <li class="rounded-sm">
                     <a href="/transaction-history">
                         <button
                             class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transaction-history') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
-                                class="w-4 h-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
                                 <path
-                                    d="M8 0a8 8 0 0 1 8 8 7.93 7.93 0 0 1-1.015 3.859 1 1 0 0 0-.314.783v1.559a1 1 0 0 1-1 1h-1.605a1 1 0 0 1-.982-1.182 1 1 0 0 0 .682-.82A6.028 6.028 0 0 0 8 6a6.028 6.028 0 0 0-4.766 5.435 1 1 0 0 0 .682.82A1 1 0 0 1 3.605 16H2a1 1 0 0 1-1-1v-1.559a1 1 0 0 0-.314-.783A7.93 7.93 0 0 1 0 8 8 8 0 0 1 8 0z">
-                                </path>
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-6h2v2h-2zm1-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
                             </svg>
-                            <span class="font-semibold">Transaction History</span>
+
+
+                            <span class="font-semibold">Report</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="rounded-sm">
+                    <a href="/transaction-history">
+                        <button
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transaction-history') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M17 2H7c-1.1 0-1.99.9-1.99 2L5 20c0 1.1.89 2 1.99 2h12c1.1 0 1.99-.9 1.99-2V4c0-1.1-.89-2-1.99-2zm-6 14H9v-4h2v4zm4 0h-2v-6h2v6zm-4-10H9V4h2v4z" />
+                            </svg>
+
+
+                            <span class="font-semibold">Help</span>
                         </button>
                     </a>
                 </li>
@@ -146,19 +199,19 @@
 </div>
 
 <script>
-    const searchInput = document.getElementById('searchInput');
-    const navbarItems = document.querySelectorAll('#navbar li');
+const searchInput = document.getElementById('searchInput');
+const navbarItems = document.querySelectorAll('#navbar li');
 
-    searchInput.addEventListener('input', function() {
-        const filter = searchInput.value.toLowerCase();
+searchInput.addEventListener('input', function() {
+    const filter = searchInput.value.toLowerCase();
 
-        navbarItems.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            if (text.includes(filter)) {
-                item.style.display = ''; // Show item
-            } else {
-                item.style.display = 'none'; // Hide item
-            }
-        });
+    navbarItems.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(filter)) {
+            item.style.display = ''; // Show item
+        } else {
+            item.style.display = 'none'; // Hide item
+        }
     });
+});
 </script>

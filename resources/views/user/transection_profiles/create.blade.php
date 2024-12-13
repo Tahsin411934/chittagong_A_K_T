@@ -4,7 +4,7 @@
             @include('user.sidebar.sidebar')
         </div>
 
-        <div class="container mx-auto mt-10 p-6 col-span-9">
+        <div class="container mx-auto mt-1 px-6 col-span-9">
             @if(session('success'))
             <div id="successMessage" class="bg-green-100 text-green-700 p-4 rounded mb-4">
                 {{ session('success') }}
@@ -25,8 +25,9 @@
                     <div class="col-span-3 text-xl font-bold font-prata dark:text-gray-50">
                         <h1>Make A Deposit</h1>
                         <div class="font-base dark:text-gray-400 text-sm mt-6">
+                        <div id="time"></div>
                             <div id="date"></div>
-                            <div id="time"></div>
+                            
                         </div>
                     </div>
                 </div>
@@ -43,7 +44,7 @@
 
                 <div class="mb-4">
                     <label for="member_name" class="block dark:text-gray-50">Member Name</label>
-                    <input type="text" id="member_name" class="border text-gray-900 rounded-lg p-2 w-full" readonly>
+                    <input type="text" id="member_name" class="border  text-gray-900 rounded-lg p-2 w-full" readonly>
                 </div>
 
                 <div class="mb-4">
@@ -160,7 +161,7 @@
             }
     
             updateDateTime();
-            setInterval(updateDateTime, 1000);
+            setInterval(updateDateTime, 10000000);
         });
     </script>
     
