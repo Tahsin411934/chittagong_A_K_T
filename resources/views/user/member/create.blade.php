@@ -18,233 +18,178 @@
         <div class="col-span-9">
 
 
-            @if (session('success'))
-                <p class=" text-green-700 p-4 bg-green-100 rounded  w-[100%] mx-auto ">{{ session('success') }}</p>
-            @endif
+            
             <div class="w-[70%] mx-auto dark:bg-gray-800 px-5 py-1 ">
-                <form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data"
-                    onsubmit="return validateForm()">
-                    @csrf
+            <form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+    @csrf
 
-                    <div
-                        class="  p-8 border  dark:border-gray-800 border-blue-300  dark:bg-transparent shadow-lg rounded-xl">
-                        <div class="text-center pb-8 text-xl dark:text-[#95A5BC] font-semibold">
-                            <h2>
-                                Provide Your Information To
-                            </h2>
-                            <h1 class="font-bold font-prata dark:text-white">
-                                Be A Member
-                            </h1>
+    <div class="p-8 border dark:border-gray-800 border-blue-300 dark:bg-transparent shadow-lg rounded-xl">
+        <div class="text-center pb-8 text-xl dark:text-[#95A5BC] font-semibold">
+            <h2>Provide Your Information To</h2>
+            <h1 class="font-bold font-prata dark:text-white">Be A Member</h1>
+        </div>
+        <!-- Member Details -->
+        <div class="">
+
+            <div class="flex items-center justify-center gap-2">
+                <!-- Member ID -->
+                <div class="mb-4 form-control w-full">
+                    <label for="member_id" class="block dark:text-gray-50 mb-2">Member ID</label>
+                    <input type="number" id="member_id" name="member_id" value="{{ $largestMemberId + 1 }}" required class="input-field w-full" readonly>
+                </div>
+
+                <!-- Member Name -->
+                <div class="mb-4 form-control w-full">
+                    <label for="member_name" class="block dark:text-gray-50 mb-2">Member Name</label>
+                    <input type="text" id="Name" name="Name" value="{{ old('Name') }}" required class="input-field w-full">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Father's Name -->
+                <div class="mb-4 form-control w-full">
+                    <label for="FatherName" class="block dark:text-gray-50 mb-2">Father's Name</label>
+                    <input type="text" id="FatherName" name="FatherName" value="{{ old('FatherName') }}" required class="input-field w-full">
+                </div>
+
+                <!-- Mother's Name -->
+                <div class="mb-4 form-control w-full">
+                    <label for="MotherName" class="block dark:text-gray-50 mb-2">Mother's Name</label>
+                    <input type="text" id="MotherName" name="MotherName" value="{{ old('MotherName') }}" required class="input-field w-full">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Spouse's Name -->
+                <div class="mb-4 form-control w-full">
+                    <label for="SpouseName" class="block dark:text-gray-50 mb-2">Spouse's Name (Optional)</label>
+                    <input type="text" id="SpouseName" name="SpouseName" value="{{ old('SpouseName') }}" class="input-field w-full">
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="mb-4 form-control w-full">
+                    <label for="PhoneNumber" class="block dark:text-gray-50 mb-2">Mobile Number</label>
+                    <input type="number" id="PhoneNumber" name="PhoneNumber" value="{{ old('PhoneNumber') }}" class="input-field w-full">
+                </div>
+            </div>
+
+            <!-- Permanent Address -->
+            <div>
+                <div class="mb-4">
+                    <label for="PerAddress" class="block dark:text-gray-50 mb-2">Permanent Address</label>
+                    <textarea id="PerAddress" name="PerAddress" required class="input-field w-full">{{ old('PerAddress') }}</textarea>
+                </div>
+
+                <!-- Present Address -->
+                <div class="mb-4">
+                    <label for="MailAddress" class="block dark:text-gray-50 mb-2">Present Address</label>
+                    <textarea id="MailAddress" name="MailAddress" required class="input-field w-full">{{ old('MailAddress') }}</textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Email -->
+                <div class="mb-4 form-control w-full">
+                    <label for="EMail" class="block dark:text-gray-50 mb-2">Email</label>
+                    <input type="email" id="EMail" name="EMail" value="{{ old('EMail') }}" class="input-field w-full">
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="mb-4 form-control w-full">
+                    <label for="DateOfBirth" class="block dark:text-gray-50 mb-2">Date of Birth</label>
+                    <input type="date" id="DateOfBirth" name="DateOfBirth" value="{{ old('DateOfBirth') }}" class="input-field w-full">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- National ID Number -->
+                <div class="mb-4 form-control w-full">
+                    <label for="NID" class="block dark:text-gray-50 mb-2">National ID Number</label>
+                    <input type="number" id="NID" name="NID" value="{{ old('NID') }}" class="input-field w-full">
+                </div>
+
+                <!-- Occupation -->
+                <div class="mb-4 form-control w-full">
+                    <label for="Occupation" class="block dark:text-gray-50 mb-2">Occupation</label>
+                    <input type="text" id="Occupation" name="Occupation" value="{{ old('Occupation') }}" class="input-field w-full">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Educational Qualification -->
+                <div class="mb-4 form-control w-full">
+                    <label for="EducationalQualification" class="block dark:text-gray-50 mb-2">Educational Qualification</label>
+                    <input type="text" id="EducationalQualification" name="EducationalQualification" value="{{ old('EducationalQualification') }}" class="input-field w-full">
+                </div>
+
+                <!-- Akhanda Kalyan Tahabil -->
+                <div class="mb-4 form-control w-full">
+                    <label for="MemberOfAkhondomondoli" class="block dark:text-gray-50 mb-2">Member of Tahabil</label>
+                    <select id="MemberOfAkhondomondoli" name="MemberOfAkhondomondoli" class="input-field w-full">
+                        <option value="">Select</option>
+                        <option value="chittagong" {{ old('MemberOfAkhondomondoli') == 'chittagong' ? 'selected' : '' }}>
+                            Chittagong akhanda kalyan tahabil
+                        </option>
+                        <option value="dhaka" {{ old('MemberOfAkhondomondoli') == 'dhaka' ? 'selected' : '' }}>
+                            Dhaka akhanda kalyan tahabil
+                        </option>
+                        <option value="coxbazar" {{ old('MemberOfAkhondomondoli') == 'coxbazar' ? 'selected' : '' }}>
+                            Cox's Bazar akhanda kalyan tahabil
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Address of Akhandomondoli -->
+                <div class="mb-4 form-control w-full">
+                    <label for="AddressOfAkhondomondoli" class="block dark:text-gray-50 mb-2">Address Tahabil</label>
+                    <input type="text" id="AddressOfAkhondomondoli" name="AddressOfAkhondomondoli" value="{{ old('AddressOfAkhondomondoli') }}" class="input-field w-full">
+                </div>
+            </div>
+        </div>
+
+        <!-- Image and Signature Uploads -->
+        <div class="col-span-2 mx-auto w-[85%]">
+            <div>
+                <div class="flex items-center justify-center gap-10 mt-8">
+                    <!-- Image Upload Section -->
+                    <div class="flex flex-col">
+                        <div class="border border-gray-400 rounded-2xl h-40 w-40 flex items-center justify-center relative mb-4">
+                            <div id="image-preview" class="preview-container -mt-5 h-36 w-36 rounded-2xl"></div>
+                            <div id="camera-container" class="hidden absolute top-0 left-0 w-full h-full">
+                                <video id="video" class="w-full h-full" autoplay></video>
+                                <button type="button" class="bg-blue-600 text-white rounded-lg mt-2" onclick="capturePhoto('image')">Capture Image</button>
+                                <canvas id="canvas" class="hidden"></canvas>
+                            </div>
                         </div>
-                        <!-- Member Details -->
-                        <div class=" ">
-                            <div class="flex items-center justify-center  gap-2">
+                        <div class="preview-container" id="image-preview-container">
+                            <label for="image" class="block w-36 mb-2">Upload Image</label>
+                            <input type="file" id="image" name="image" class="border w-56 p-2" onchange="previewImage('image')">
+                            <button type="button" class="bg-slate-700 text-white rounded-lg px-4 py-2 mt-2" onclick="startCamera('image')">Open Camera</button>
+                        </div>
+                    </div>
 
-
-                                <!-- Member ID -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="member_id" class="block dark:text-gray-50 mb-2">Member ID</label>
-                                    <input type="number" id="member_id" name="member_id"
-                                        value="{{ $largestMemberId + 1 }}" required
-                                        class="dark:bg-gray-800 px-2 rounded-md    w-full" readonly>
-
-                                </div>
-
-                                <!-- Member Name -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="member_name" class="block dark:text-gray-50 mb-2">Member Name</label>
-                                    <input type="text" id="Name" name="Name" value="{{ old('Name') }}"
-                                        required class=" dark:bg-gray-800 px-2 rounded-md   w-full">
-
-                                </div>
+                    <!-- Signature Upload Section -->
+                    <div class="flex flex-col">
+                        <div class="border rounded-2xl border-gray-400 h-40 w-40 flex items-center justify-center relative mb-4">
+                            <div id="signature-preview" class="preview-container rounded-xl -mt-5 h-36 w-36"></div>
+                            <div id="signature-camera-container" class="hidden absolute top-0 left-0 w-full h-full">
+                                <video id="signature-video" class="w-full h-full" autoplay></video>
+                                <button type="button" class="bg-blue-600 text-white rounded-lg mt-2" onclick="capturePhoto('signature')">Capture Signature</button>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <!-- Father's Name -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="FatherName" class="block dark:text-gray-50 mb-2">Father's Name</label>
-                                    <input type="text" id="FatherName" name="FatherName"
-                                        value="{{ old('FatherName') }}" required
-                                        class="dark:bg-gray-800 px-2 rounded-md   w-full">
-                                </div>
+                        </div>
+                        <div class="preview-container" id="signature-preview-container">
+                            <label for="signature" class="block w-36 mb-2">Upload Signature</label>
+                            <input type="file" id="signature" name="signature" class="border w-56 p-2" onchange="previewSignature()">
+                            <button type="button" class="bg-slate-700 text-white rounded-lg px-4 py-2 mt-2" onclick="startCamera('signature')">Open Camera</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                <!-- Mother's Name -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="MotherName" class="block dark:text-gray-50 mb-2">Mother's Name</label>
-                                    <input type="text" id="MotherName" name="MotherName"
-                                        value="{{ old('MotherName') }}" required
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="mb-4 form-control w-full">
-                                    <label for="SpouseName" class="block dark:text-gray-50 mb-2">Spouse's Name
-                                        (Optional)</label>
-                                    <input type="text" id="SpouseName" name="SpouseName"
-                                        value="{{ old('SpouseName') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                                <!-- Mobile Number -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="PhoneNumber" class="block dark:text-gray-50 mb-2">Mobile Number</label>
-                                    <input type="number" id="PhoneNumber" name="PhoneNumber"
-                                        value="{{ old('PhoneNumber') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                            </div>
-
-                            <!-- Permanent Address -->
-                            <div>
-
-
-                                <div class="mb-4">
-                                    <label for="PerAddress" class="block dark:text-gray-50 mb-2">Permanent
-                                        Address</label>
-                                    <textarea id="PerAddress" name="PerAddress" required class="dark:bg-gray-800 px-2 rounded-md  w-full">{{ old('PerAddress') }}</textarea>
-                                </div>
-
-                                <!-- Present Address -->
-                                <div class="mb-4">
-                                    <label for="MailAddress" class="block dark:text-gray-50 mb-2">Present
-                                        Address</label>
-                                    <textarea id="MailAddress" name="MailAddress" required class="dark:bg-gray-800 px-2 rounded-md  w-full">{{ old('MailAddress') }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-2">
-                                <!-- Email -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="EMail" class="block dark:text-gray-50 mb-2">Email</label>
-                                    <input type="email" id="EMail" name="EMail" value="{{ old('EMail') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-
-                                <!-- Date of Birth -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="DateOfBirth" class="block dark:text-gray-50 mb-2">Date of Birth</label>
-                                    <input type="date" id="DateOfBirth" name="DateOfBirth"
-                                        value="{{ old('DateOfBirth') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <!-- National ID Number -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="NID" class="block dark:text-gray-50 mb-2">National ID
-                                        Number</label>
-                                    <input type="number" id="NID" name="NID" value="{{ old('NID') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-
-                                <!-- Occupation -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="Occupation" class="block dark:text-gray-50 mb-2">Occupation</label>
-                                    <input type="text" id="Occupation" name="Occupation"
-                                        value="{{ old('Occupation') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="mb-4 form-control w-full">
-                                    <label for="EducationalQualification"
-                                        class="block dark:text-gray-50 mb-2">Educational Qualification</label>
-                                    <input type="text" id="EducationalQualification"
-                                        name="EducationalQualification" value="{{ old('EducationalQualification') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-
-                                <!-- Akhanda Kalyan Tahabil -->
-                                <div class="mb-4 form-control w-full">
-                                    <label for="MemberOfAkhondomondoli" class="block dark:text-gray-50 mb-2">Member of
-                                        Tahabil</label>
-                                    <select id="MemberOfAkhondomondoli" name="MemberOfAkhondomondoli"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                        <option value="">Select</option>
-                                        <option value="chittagong"
-                                            {{ old('MemberOfAkhondomondoli') == 'chittagong' ? 'selected' : '' }}>
-                                            Chittagong akhanda kalyan tahabil
-                                        </option>
-                                        <option value="dhaka"
-                                            {{ old('MemberOfAkhondomondoli') == 'dhaka' ? 'selected' : '' }}>
-                                            Dhaka akhanda kalyan tahabil
-                                        </option>
-                                        <option value="coxbazar"
-                                            {{ old('MemberOfAkhondomondoli') == 'coxbazar' ? 'selected' : '' }}>
-                                            Cox's Bazar akhanda kalyan tahabil
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="mb-4 form-control w-full">
-                                    <label for="AddressOfAkhondomondoli" class="block dark:text-gray-50 mb-2">Address
-                                        Tahabil</label>
-                                    <input type="text" id="AddressOfAkhondomondoli" name="AddressOfAkhondomondoli"
-                                        value="{{ old('AddressOfAkhondomondoli') }}"
-                                        class="dark:bg-gray-800 px-2 rounded-md  w-full">
-                                </div>
-                            </div>
-                     </div>
-
-                        <!-- Image and Signature Uploads -->
-                        <div class="col-span-2 mx-auto w-[85%]">
-                            <div>
-                                <div class="flex items-center justify-center gap-10 mt-8">
-
-                                    <!-- Image Upload Section -->
-                                    <div class="flex flex-col ">
-                                        <div
-                                            class="border border-gray-400 rounded-2xl h-40 w-40 flex items-center justify-center relative mb-4">
-                                            <div id="image-preview"
-                                                class="preview-container  -mt-5 h-36 w-36 rounded-2xl"></div>
-                                            <div id="camera-container"
-                                                class="hidden absolute top-0 left-0 w-full h-full">
-                                                <video id="video" class="w-full h-full" autoplay></video>
-                                                <button type="button" class="bg-blue-600 text-white rounded-lg mt-2"
-                                                    onclick="capturePhoto('image')">Capture Image</button>
-                                                <canvas id="canvas" class="hidden"></canvas>
-                                            </div>
-                                        </div>
-                                        <div class="preview-container  " id="image-preview-container ">
-                                            <label for="image" class="block w-36 mb-2">Upload Image</label>
-                                            <input type="file" id="image" name="image"
-                                                class="border w-56 p-2" onchange="previewImage('image')">
-                                            <button type="button"
-                                                class="bg-slate-700 text-white rounded-lg px-4 py-2 mt-2"
-                                                onclick="startCamera('image')">Open Camera</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Signature Upload Section -->
-                                    <div class="flex flex-col ">
-                                        <div
-                                            class="border rounded-2xl border-gray-400 h-40 w-40  flex items-center justify-center relative mb-4">
-                                            <div id="signature-preview"
-                                                class="preview-container rounded-xl -mt-5 h-36 w-36"></div>
-                                            <div id="signature-camera-container"
-                                                class="hidden absolute top-0 left-0 w-full h-full">
-                                                <video id="signature-video" class="w-full h-full" autoplay></video>
-                                                <button type="button" class="bg-blue-600 text-white rounded-lg mt-2"
-                                                    onclick="capturePhoto('signature')">Capture Signature</button>
-                                            </div>
-                                        </div>
-                                        <div class="preview-container" id="signature-preview-container">
-                                            <label for="signature" class="block w-36 mb-2">Upload Signature
-                                            </label>
-                                            <input type="file" id="signature" name="signature"
-                                                class="border w-56 p-2" onchange="previewSignature()">
-                                            <button type="button"
-                                                class="bg-slate-700 text-white rounded-lg px-4 py-2 mt-2"
-                                                onclick="startCamera('signature')">Open Camera for Signature</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-                            <!-- Submit Button -->
-                            <div class="flex justify-around mt-7 gap-5 items-center mx-auto w-[70%]">
+        <div class="flex justify-around mt-7 gap-5 items-center mx-auto w-[70%]">
                                 <div class="mb-4 form-control w-full">
                                     <button type="submit" class="bg-blue-600  text-white rounded-lg px-4 py-2">Add
                                         New
@@ -259,8 +204,21 @@
                                 </div>
 
                             </div>
-                        </div>
-                </form>
+    </div>
+</form>
+
+<!-- Add Custom Styling to Ensure Input Consistency -->
+<style>
+    .input-field {
+        height: 45px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        background-color: transparent;
+        box-shadow: none;
+    }
+</style>
+
             </div>
                 <script>
                     function getRandomTitle() {
@@ -425,6 +383,25 @@
 
                         return true; // Proceed with form submission
                     }
+                    @if(session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top", // Position: top or bottom
+                position: "right", // Position: left, center, or right
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        @elseif(session('error'))
+            Toastify({
+                text: "{{ session('error') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
+        @endif
                 </script>
 
             {{-- </div> --}}

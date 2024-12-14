@@ -36,8 +36,7 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited(); // Ensure the rate limit is not exceeded
 
         // Get the credentials
-        $credentials = $this->only('UserName', 'password','type');
-
+        $credentials = $this->only('UserName', 'password','type','secretary_password','president_password');
         // Fetch the user from the database
         $user = User::where('UserName', $credentials['UserName'])->first();
 
@@ -54,7 +53,15 @@ class LoginRequest extends FormRequest
             // If the user is found and the password matches, log the user in
             Auth::login($user);
             RateLimiter::clear($this->throttleKey()); // Clear the rate limiter for this user
-        } else {
+        }elseif ($user && $credentials['password']=== $user->Password && $credentials['type'] === "admin" ) {
+            if($credentials['secretary_password'] != NULL || $credentials['president_password'] != NULL){
+                Auth::login($user);
+                RateLimiter::clear($this->throttleKey());
+            }
+        }
+        
+        
+        else {
             // Hit the rate limiter and throw an error if authentication fails
             RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages([

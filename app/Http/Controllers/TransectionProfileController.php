@@ -83,7 +83,7 @@ public function store(Request $request)
 
     // Redirect to the show page of the newly created transaction
     return redirect()->route('transection_profiles.show', $transection->Trans_ID, )
-                     ->with('success', 'Profile created successfully.')
+                     ->with('success', 'Transection created successfully.')
                      ->with('member', $member); 
 }
 

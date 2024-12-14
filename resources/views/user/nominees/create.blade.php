@@ -8,7 +8,7 @@
         </div>
 
         <!-- Main Form Section -->
-        <div class="container col-span-9 mx-auto p-4 -mt-2 ">
+        <div class="container col-span-9 mx-auto p-4 -mt-4 ">
             @if(session('success'))
                 <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
                     {{ session('success') }}
@@ -17,7 +17,7 @@
 
             <form action="{{ route('nominees.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="border border-slate-700 w-[60%] mx-auto shadow-2xl rounded-xl">
+                <div class="border border-slate-700 w-[65%] bg-slate-800 mx-auto shadow-2xl ">
                     <div class="text-center pb-8 text-xl dark:text-[#95A5BC] font-semibold">
                         <h1 class="font-bold font-prata pt-3 dark:text-white">Add A Nominee</h1>
                     </div>
@@ -97,7 +97,7 @@
 
                     <!-- Submit Button -->
                     <div class="text-center p-10">
-                        <button type="submit" class="bg-blue-500  p-2 rounded">Add Nominee</button>
+                        <button type="submit" class="bg-blue-500 text-white  p-2 rounded">Add Nominee</button>
                         <div class="mb-4 mt-5 w-full flex justify-end">
                             <a href="/nominees/create" class="bg-gray-800 border border-blue-50 text-white rounded-lg px-4 py-2">Add another Nominee</a>
                         </div>

@@ -59,7 +59,7 @@ class MemberController extends Controller
 
         // Create a new member
         $data = $request->except(['image', 'signature']);
-        $data['CurrentAmount'] = '1';
+        $data['CurrentAmount'] = '0';
         $data['Date'] = now();
         // Handle image upload
        // Handle image upload

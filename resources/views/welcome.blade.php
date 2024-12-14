@@ -17,9 +17,12 @@
         </div>
         
         <div class="flex flex-col gap-5 mt-10 justify-center items-center">
-            <button class="w-40 bg-gray-50 rounded-xl font-semibold text-xl shadow-2xl py-2">
-                Admin Login
-            </button>
+        <button class="w-40 bg-gray-50 p-3 rounded-xl font-semibold text-xl shadow-2xl">
+                        <a href="login/admin"
+                            class=" hover:text-black/70 focus:outline-none dark:text-white dark:hover:text-white/80">
+                            Admin Login
+                        </a>
+                    </button>
 
             <header class="mt-4">
                 @if (Route::has('login'))

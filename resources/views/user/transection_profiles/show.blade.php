@@ -1,16 +1,12 @@
 <x-app-layout>
-    @if (session('success'))
-        <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
+   
     <div class="grid grid-cols-10">
         <div class="col-span-2 ">
             @include('user.sidebar.sidebar')
         </div>
 
         <div id="printableArea"
-            class="container  border border-gray-600 w-[70%] mt-2   col-span-8 mx-auto dark:text-gray-100  p-4 rounded-lg shadow-lg">
+            class="container  border border-gray-600 w-[70%] mt-2   col-span-8 mx-auto dark:text-gray-100  p-4  shadow-lg">
             <img src="/logo.jpg" alt="" class="w-12 mx-auto   h-12 rounded-full">
 
             <h1 class="text-2xl font-bold text-center ">Chattogram Akhanda Kalyan Tahabil</h1>
@@ -92,5 +88,25 @@
             document.body.innerHTML = originalContents;
             location.reload(); // Reload the page to restore the original content
         }
+
+        @if(session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top", // Position: top or bottom
+                position: "right", // Position: left, center, or right
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        @elseif(session('error'))
+            Toastify({
+                text: "{{ session('error') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
+        @endif
     </script>
 </x-app-layout>

@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen p-3 w-[240px] bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl " >
+<div class="flex flex-col h-screen p-3  bg-transparent border-r dark:border-gray-700 dark:text-white font-inter text-[#0a0a0a] shadow-2xl " >
     <div class="space-y-3">
 
         <div class="flex items-center justify-between">
@@ -70,7 +70,7 @@
                 <li class="rounded-sm">
                     <a href="/transection_profiles/create/withdrawls">
                         <button
-                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('withdrawals/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('transection_profiles/create/withdrawls') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path d="M3 12h18v2H3z" />
@@ -97,7 +97,7 @@
                 <li class="rounded-sm">
                     <a href="/generate-receipt/create">
                         <button
-                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('/generate-receipt/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
+                            class="flex items-center p-2 space-x-3 rounded-md {{ request()->is('generate-receipt/create') ? 'pb-2 w-full text-[#165BAA]' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                                 fill="currentColor">
                                 <path

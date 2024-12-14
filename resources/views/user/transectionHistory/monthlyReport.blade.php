@@ -1,23 +1,27 @@
 <x-app-layout>
-    <div class="grid border grid-cols-10">
-        <div class="col-span-2">
+    <div class="grid grid-cols-10 border border-gray-200 dark:border-gray-700 min-h-screen">
+        <!-- Sidebar -->
+        <div class="col-span-2 bg-gray-100 dark:bg-gray-900 ">
             @include('user.sidebar.sidebar')
         </div>
-        <div class="col-span-8">
+
+        <!-- Main Content -->
+        <div class="col-span-8 bg-white dark:bg-gray-800 p-6">
             @include('layouts.viewTransectionTab')
 
             <div class="container mx-auto">
-                <h1 class="text-center mb-4 font-bold text-2xl dark:text-gray-200">
+                <!-- Page Title -->
+                <h1 class="text-center mb-6 font-extrabold text-3xl text-gray-800 dark:text-gray-100">
                     Monthly Transaction Report
                 </h1>
 
                 <!-- Month and Year Selection Form -->
-                <form method="GET" action="{{ route('transaction.monthlyReport') }}" id="monthly-report-form">
+                <form method="GET" action="{{ route('transaction.monthlyReport') }}" id="monthly-report-form" class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
 
                     <!-- Month Selection -->
-                    <div class="mb-3">
-                        <label for="month" class="form-label">Select Month:</label>
-                        <select id="month" name="month" class="form-control text-slate-950" required onchange="this.form.submit()">
+                    <div>
+                        <label for="month" class="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-1">Select Month:</label>
+                        <select id="month" name="month" class="form-control border border-gray-300 dark:border-gray-600 rounded-lg py-2 px-4 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none" required onchange="this.form.submit()">
                             @for ($m = 1; $m <= 12; $m++)
                                 <option value="{{ str_pad($m, 2, '0', STR_PAD_LEFT) }}" 
                                         {{ $selectedMonth == str_pad($m, 2, '0', STR_PAD_LEFT) ? 'selected' : '' }}>
@@ -28,9 +32,9 @@
                     </div>
 
                     <!-- Year Selection -->
-                    <div class="mb-3">
-                        <label for="year" class="form-label">Select Year:</label>
-                        <input type="number" id="year" name="year" class="form-control text-slate-950" 
+                    <div>
+                        <label for="year" class="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-1">Select Year:</label>
+                        <input type="number" id="year" name="year" class="form-control border border-gray-300 dark:border-gray-600 rounded-lg py-2 px-4 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none" 
                                value="{{ $selectedYear }}" required onchange="this.form.submit()">
                     </div>
 
@@ -38,37 +42,39 @@
 
                 <!-- Display Transactions -->
                 @if($transactions->isNotEmpty())
-                    <h2 class="mt-4 text-center">
+                    <h2 class="mt-4 text-center text-2xl font-semibold text-gray-800 dark:text-gray-200">
                         Transactions for {{ \Carbon\Carbon::parse($selectedYear . '-' . $selectedMonth . '-01')->format('F, Y') }}
                     </h2>
 
                     <!-- Table for displaying transactions -->
-                    <div class="overflow-x-auto w-full">
-                        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                    <div class="overflow-x-auto mt-6 rounded-lg shadow-lg">
+                        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700">
                             <thead>
                                 <tr class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-                                    <th class="py-2 px-4 border-b">Member ID</th>
-                                    <th class="py-2 px-4 border-b">User ID</th>
-                                    <th class="py-2 px-4 border-b">Date</th>
-                                    <th class="py-2 px-4 border-b">Debit</th>
-                                    <th class="py-2 px-4 border-b">Credit</th>
+                                    <th class="py-3 px-6 text-left">Member ID</th>
+                                    <th class="py-3 px-6 text-left">User ID</th>
+                                    <th class="py-3 px-6 text-left">Date</th>
+                                    <th class="py-3 px-6 text-right">Debit</th>
+                                    <th class="py-3 px-6 text-right">Credit</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($transactions as $transaction)
-                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
-                                        <td class="py-2 px-4 border-b">{{ $transaction->Member_ID }}</td>
-                                        <td class="py-2 px-4 border-b">{{ $transaction->User_ID }}</td>
-                                        <td class="py-2 px-4 border-b">{{ $transaction->Date }}</td>
-                                        <td class="py-2 px-4 border-b">{{ $transaction->Debit ?? 'N/A' }}</td>
-                                        <td class="py-2 px-4 border-b">{{ $transaction->Credit ?? 'N/A' }}</td>
+                                    <tr class="hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
+                                        <td class="py-3 px-6">{{ $transaction->Member_ID }}</td>
+                                        <td class="py-3 px-6">{{ $transaction->User_ID }}</td>
+                                        <td class="py-3 px-6">{{ $transaction->Date }}</td>
+                                        <td class="py-3 px-6 text-right">{{ $transaction->Debit ?? 'N/A' }}</td>
+                                        <td class="py-3 px-6 text-right">{{ $transaction->Credit ?? 'N/A' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 @else
-                    <p class="mt-4 text-center">No transactions found for the selected month.</p>
+                    <p class="mt-8 text-center text-lg text-gray-700 dark:text-gray-300">
+                        No transactions found for the selected month.
+                    </p>
                 @endif
             </div>
         </div>

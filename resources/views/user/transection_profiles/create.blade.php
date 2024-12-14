@@ -4,14 +4,10 @@
             @include('user.sidebar.sidebar')
         </div>
 
-        <div class="container mx-auto mt-1 px-6 col-span-9">
-            @if(session('success'))
-            <div id="successMessage" class="bg-green-100 text-green-700 p-4 rounded mb-4">
-                {{ session('success') }}
-            </div>
-            @endif
+        <div class="container mx-auto  px-6 col-span-9">
+           
 
-            <form action="{{ route('transection_profiles.store') }}" method="POST" class="w-[65%] mx-auto bg-slate-200 dark:bg-gray-800 py-4 px-8 border border-gray-700 rounded-xl" id="transactionForm">
+            <form action="{{ route('transection_profiles.store') }}" method="POST" class="w-[65%] mx-auto bg-slate-200 dark:bg-gray-800 py-4 px-8 border border-gray-700 " id="transactionForm">
                 @csrf
 
                 <div class="grid grid-cols-5 items-center">
@@ -33,38 +29,41 @@
                 </div>
 
                 <div class="w-full mb-4">
-                    <label for="member_id" class="block dark:text-gray-50">Member ID</label>
-                    <input type="number" list="members_list" id="member_id" name="Member_ID" class="rounded-lg p-2 w-full dark:text-gray-50 text-gray-700 border border-gray-300 dark:border-gray-700 dark:bg-slate-800" placeholder="Type to search..." required>
-                    <datalist id="members_list">
-                        @foreach($members as $member)
-                        <option value="{{ $member->Member_ID }}">{{ $member->Member_ID }} - {{ $member->Name }}</option>
-                        @endforeach
-                    </datalist>
-                </div>
+                                <label for="member_id" class="block dark:text-gray-50">Member ID</label>
+                                <input type="numbe" list="members_list" id="member_id" name="Member_ID"
+                                    class=" rounded-lg p-2 w-full dark:text-gray-50 text-gray-700 border border-gray-300 dark:border-gray-700 dark:bg-slate-800" required
+                                    placeholder="Type to search...">
+                                    
+                                <datalist id="members_list">
+                                    @foreach($members as $member)
+                                        <option value="{{ $member->Member_ID }}">{{ $member->Member_ID }} - {{ $member->Name }}</option>
+                                    @endforeach
+                                </datalist>
+                            </div>
 
                 <div class="mb-4">
                     <label for="member_name" class="block dark:text-gray-50">Member Name</label>
-                    <input type="text" id="member_name" class="border  text-gray-900 rounded-lg p-2 w-full" readonly>
+                    <input type="text" id="member_name" class="border dark:bg-gray-800  dark:text-gray-100 text-gray-900 rounded-lg p-2 w-full" readonly>
                 </div>
 
                 <div class="mb-4">
                     <label for="Date" class="block dark:text-gray-50">Date:</label>
-                    <input type="date" id="Date" name="Date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="border text-gray-900 rounded-lg p-2 w-full" required>
+                    <input type="date" id="Date" name="Date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="border dark:bg-gray-800  dark:text-gray-100 text-gray-900 rounded-lg p-2 w-full" required>
                 </div>
 
                 <div class="mb-4">
                     <label for="balance" class="block dark:text-gray-50">Balance</label>
-                    <input type="text" id="balance" name="balance" class="border text-gray-900 rounded-lg p-2 w-full" value="{{ old('balance') }}" readonly>
+                    <input type="text" id="balance" name="balance" class="border dark:bg-gray-800  dark:text-gray-100 text-gray-900 rounded-lg p-2 w-full" value="{{ old('balance') }}" readonly>
                 </div>
 
                 <div class="mb-4">
                     <label for="Debit" class="block dark:text-gray-50">Debit:</label>
-                    <input type="number" step="0.01" id="Debit" name="Debit" class="border text-gray-900 rounded-lg p-2 w-full" placeholder="Enter Debit Amount" required>
+                    <input type="number" step="0.01" id="Debit" name="Debit" class="border dark:bg-gray-800  dark:text-gray-100 text-gray-900 rounded-lg p-2 w-full" placeholder="Enter Debit Amount" required>
                 </div>
 
                 <div class="mb-4">
                     <label for="current_balance" class="block dark:text-gray-50">Current Balance</label>
-                    <input type="text" id="current_balance" class="border rounded-lg text-gray-900 p-2 w-full" value="{{ old('current_balance') }}" readonly>
+                    <input type="text" id="current_balance" class="border dark:bg-gray-800  dark:text-gray-100 rounded-lg text-gray-900 p-2 w-full" value="{{ old('current_balance') }}" readonly>
                 </div>
 
                 <div class="text-center">
@@ -163,6 +162,26 @@
             updateDateTime();
             setInterval(updateDateTime, 10000000);
         });
+
+        @if(session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top", // Position: top or bottom
+                position: "right", // Position: left, center, or right
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        @elseif(session('error'))
+            Toastify({
+                text: "{{ session('error') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
+        @endif
     </script>
     
     

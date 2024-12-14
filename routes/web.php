@@ -7,6 +7,7 @@ use App\Http\Controllers\TransectionProfileController;
 use App\Http\Controllers\GenerateReceiptController;
 use App\Http\Controllers\TransectionHistoryController;
 use App\Http\Controllers\BenifitController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 /*
@@ -24,14 +25,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-     if (Auth::user()->Role === "User") {
-        return view('dashboard');
-     } else {
-        return view('Admin.deshboard');
-     }
-      
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,6 +61,7 @@ Route::get('/generate-receipt/create', [GenerateReceiptController::class, 'creat
 
 Route::get('/nominees/create', [NomineeController::class, 'create'])->name('user.nominees.create');
 Route::post('/nominees', [NomineeController::class, 'store'])->name('nominees.store');
+
 
 Route::get('/transaction-history', [TransectionHistoryController::class, 'index'])->name('transaction-history.create');
 Route::get('/transaction/find', [TransectionHistoryController::class, 'findByMemberId'])->name('transaction.findByMemberId');
