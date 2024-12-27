@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-6">
         <div class="md:col-span-2">
             @include('Admin.sidebar.sidebar')
         </div>
-        <div class="container md:col-span-10 w-[60%] mx-auto  dark:text-white ">
+        <div class="container md:col-span-8 w-[60%] mx-auto  dark:text-white ">
             <div class="shadow-2xl p-8 mt-8 border ">
                 <h2 class="text-lg font-bold mb-4">Edit Transaction</h2>
                 <form id="transactionForm" action="{{ route('transaction.update') }}" method="POST">
@@ -90,5 +90,28 @@
             }
         });
     });
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            @if(session('success'))
+                Toastify({
+                    text: "{{ session('success') }}",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", // Position: top or bottom
+                    position: "right", // Position: left, center or right
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                }).showToast();
+            @elseif(session('error'))
+                Toastify({
+                    text: "{{ session('error') }}",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                }).showToast();
+            @endif
+        });
     </script>
 </x-app-layout>

@@ -10,7 +10,7 @@
                     </a>
                 </div>
 
-                <div class="font-bold font-inter text-2xl ">
+                <div class="font-bold font-inter md:text-2xl text-base">
                     <h1>Chattogram-Akhanda-Kalyan-Tahabil </h1>
                 </div>
                 <!-- Navigation Links -->

@@ -26,7 +26,18 @@ class DashboardController extends Controller
 
             return view('dashboard', compact('Transections', 'years', 'counts'));
         } else {
-            return view('Admin.deshboard');
+            $Transections = TransectionProfile::orderBy('Trans_ID', 'desc')->limit(8)->get();
+
+            // Group transactions by year and count the number of transactions per year
+            $transactionsByYear = TransectionProfile::selectRaw('YEAR(date) as year, COUNT(*) as count')
+                ->groupByRaw('YEAR(date)')  // Group by year using SQL Server syntax
+                ->orderByRaw('YEAR(date) DESC')  // Order by year in descending order
+                ->get();
+
+            // Prepare the years and counts for the chart
+            $years = $transactionsByYear->pluck('year');
+            $counts = $transactionsByYear->pluck('count');
+            return view('Admin.deshboard', compact('Transections', 'years', 'counts'));
         }
     }
 }

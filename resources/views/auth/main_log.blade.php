@@ -8,16 +8,16 @@
         <!-- Email Address -->
         <div class="">
             <x-input-label class="text-gray-100" for="UserName" :value="__('UserName')" />
-            <x-text-input id="UserName" class="block mt-1 w-full" type="text" name="UserName" :value="old('UserName')"
+            <x-text-input id="UserName" class="block mt-1 w-full text-gray-100" type="text" name="UserName" :value="old('UserName')"
                 required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('UserName')" class="mt-2" />
+            <x-input-error :messages="$errors->get('UserName')" class="mt-2 text-gray-100" />
         </div>
 
         <!-- Password -->
         <div class="mt-4 text-gray-100">
             <x-input-label class="text-gray-100" for="password" :value="__('Casier Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full text-gray-950" type="password" name="password" required
+            <x-text-input id="password" class="block mt-1 w-full text-gray-100" type="password" name="password" required
                 autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('casier_password')" class="mt-2" />
@@ -48,7 +48,7 @@
         <!-- President Password Field -->
         <div class="mt-4 text-gray-100 " id="president-password-field">
             <x-input-label class="text-gray-100" for="president-password" :value="__('President Password')" />
-            <x-text-input id="president-password" class="block mt-1 w-full text-gray-950" type="password" name="president_password" />
+            <x-text-input id="president-password" class="block mt-1 w-full text-gray-100" type="password" name="president_password" />
         </div>
 
         <!-- Remember Me -->

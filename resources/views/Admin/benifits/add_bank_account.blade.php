@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-6">
         <div class="md:col-span-2">
             @include('Admin.sidebar.sidebar')
         </div>
-        <div class="container md:col-span-10   w-[60%] mx-auto dark:text-white">
+        <div class="container md:col-span-8   w-[60%] mx-auto dark:text-white">
         @include('layouts.benifit_tab')
             <div class="shadow-2xl p-8 border">
                 <div class="text-center">

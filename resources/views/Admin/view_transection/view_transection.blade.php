@@ -1,10 +1,10 @@
 <x-app-layout>
-<div class=" px-4 grid grid-cols-12 dark:text-white">
+<div class=" px-4 grid grid-cols-10 dark:text-white">
         <div class="md:col-span-2">
             @include('Admin.sidebar.sidebar')
         </div>
 
-        <div class="md:col-span-10 mt-5">
+        <div class="md:col-span-8 mt-5">
             <h1 class="text-2xl font-bold mb-4">Transection Information</h1>
             <div class="overflow-x-auto">
                 <table id="example" class="table-auto w-full border-collapse border border-gray-300 text-sm">

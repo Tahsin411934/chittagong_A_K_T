@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div class="md:col-span-3">
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-6">
+        <div class="md:col-span-2">
             @include('Admin.sidebar.sidebar')
         </div>
-        <div class="md:col-span-9 w-[60%] mt-10 mx-auto">
+        <div class="md:col-span-8 w-[60%] mt-10 mx-auto">
             <div class="bg-gray-900 p-8 rounded-lg text-white border shadow-md w-full">
                 <h1 class="text-2xl font-semibold text-center mb-6">Set Position</h1>
 

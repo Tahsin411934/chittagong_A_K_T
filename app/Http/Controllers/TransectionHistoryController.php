@@ -85,13 +85,14 @@ public function update(Request $request)
     // Find the transaction record by its Trans_ID
     $transaction = TransectionProfile::find($validatedData['transaction_id']);
     $member= Member::find($transaction->Member_ID);
-    
+
 
     if ($transaction) {
         // Update the fields based on the transaction type
         if ($validatedData['transactionType'] == 'debit') {
             // Update the Debit if transaction type is 'debit'
             $transaction->Debit = $validatedData['corrected_amount'] ?? $transaction->Debit;
+            
         } else {
             // Update the Credit if transaction type is 'credit'
             $transaction->Credit = $validatedData['corrected_amount'] ?? $transaction->Credit;

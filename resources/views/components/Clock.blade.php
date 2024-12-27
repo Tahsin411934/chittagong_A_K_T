@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center dark:text-[#FFF481] bg-transparent">
     <div class="bg-transparent   rounded-lg  text-center">
-        <div class="text-3xl font-semibold " id="clock">00:00:00</div>
+        <div class="lg:text-3xl font-semibold text-xl " id="clock">00:00:00</div>
     </div>
 </div>
 
